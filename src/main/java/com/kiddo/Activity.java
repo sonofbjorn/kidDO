@@ -2,6 +2,7 @@ package com.kiddo;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,16 +15,14 @@ public class Activity {
 	// TODO: Add spring data validator (http://www.baeldung.com/spring-data-rest-validators)
 	@Id
 	private String activityId;
-	private String title;
+	private String name;
 	private String description;
 	private boolean isSeasonal;
 	private Long startDate;
 	private Long endDate;
-	private List<String> daysOfWeek; // TODO: Use DayOfWeek enum for this (https://docs.oracle.com/javase/tutorial/datetime/iso/enum.html)
-	private String startTime;
-	private String endTime;
-	private List<String> ageRanges;
+	private String ageRange;
 	private BigDecimal cost;
 	private Address address;
 	private List<String> categories;
+	private Set<OpenHours> openHours;
 }

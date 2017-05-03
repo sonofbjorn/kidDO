@@ -10,6 +10,6 @@ import lombok.Data;
 public class AgeRange {
 	@Id
 	private String ageRangeId;
-	private int startAge;
-	private int endAge;
+	private int order;
+	private String name;
 }
