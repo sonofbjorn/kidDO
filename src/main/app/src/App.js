@@ -20,7 +20,15 @@ class App extends Component {
     console.log(error);
   }
   updateLatLong({ coords }) {
-    this.setState({ location: { latitude: coords.latitude, longitude: coords.longitude } });
+    this.setState({
+      location: { latitude: coords.latitude, longitude: coords.longitude }
+    });
+    fetch(
+      `/activities/bylocation?latitude=${this.state.location.latitude}&longitude=${this.state.location.longitude}`,
+      { accept: "application/json" }
+    )
+      .then(response => response.json())
+      .then(activities => this.setState({ activities: activities }));
   }
   render() {
     const activities = this.state.activities || [];
@@ -30,18 +38,22 @@ class App extends Component {
           callback={this.updateLatLong}
           errorHandler={this.handleGeolocatorError}
         />
-        <h2 className="ui header">kidDO</h2>
+        <h1 className="ui center aligned header">
+          <i className="compass icon" />
+          kidDO
+        </h1>
         <ActivityList activities={activities} />
       </div>
     );
   }
-  componentDidMount() {
-    fetch("/activities", { accept: "application/json" })
-      .then(response => response.json())
-      .then(({ _embedded: data }) =>
-        this.setState({ activities: data.activities })
-      );
-  }
+  // componentDidMount() {
+  //   fetch(
+  //     `/activities/bylocation?latitude=${this.state.location.latitude}&longitude=${this.state.location.longitude}`,
+  //     { accept: "application/json" }
+  //   )
+  //     .then(response => response.json())
+  //     .then(activities => this.setState({ activities: activities }));
+  // }
 }
 
 export default App;

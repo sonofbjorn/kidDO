@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
@@ -25,4 +26,6 @@ public class Activity {
 	private Address address;
 	private List<String> categories;
 	private Set<OpenHours> openHours;
+	private GeoJsonPoint location;
+
 }
