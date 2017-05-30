@@ -1,4 +1,4 @@
-package com.kiddo;
+package com.kiddo.model;
 
 /**
  * Adapted from: https://github.com/AustinC/UnitedStates

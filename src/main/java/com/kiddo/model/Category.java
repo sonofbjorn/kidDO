@@ -1,4 +1,4 @@
-package com.kiddo;
+package com.kiddo.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

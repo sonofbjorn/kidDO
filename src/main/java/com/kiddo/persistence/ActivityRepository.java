@@ -1,10 +1,12 @@
-package com.kiddo;
+package com.kiddo.persistence;
 
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.GeoResults;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.data.mongodb.repository.Near;
 import org.springframework.data.repository.CrudRepository;
+
+import com.kiddo.model.Activity;
 
 public interface ActivityRepository extends CrudRepository<Activity, String> {
 	// Had to manually annotate the @Near param bc SpringDataMongo was not detecting the param index

@@ -1,4 +1,4 @@
-package com.kiddo;
+package com.kiddo.model;
 
 import java.math.BigDecimal;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.kiddo;
+package com.kiddo.model;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
