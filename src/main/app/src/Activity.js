@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Activity = ({ activity, distance }) => {
   const cost = activity.cost === 0 ? "Free" : `$${activity.cost}`;
@@ -21,6 +22,11 @@ const Activity = ({ activity, distance }) => {
       </div>
     </div>
   );
+};
+
+Activity.propTypes = {
+  activity: PropTypes.object.isRequired,
+  distance: PropTypes.object.isRequired
 };
 
 export default Activity;

@@ -17,7 +17,7 @@ class App extends Component {
     this.updateLatLong = this.updateLatLong.bind(this);
   }
   handleGeolocatorError(error) {
-    console.log(error);
+    console.log(error); // TODO: fallback to search when error occurs with geolocation
   }
   updateLatLong({ coords }) {
     this.setState({
@@ -36,7 +36,7 @@ class App extends Component {
       <div className="ui main text container">
         <Geolocator
           callback={this.updateLatLong}
-          errorHandler={this.handleGeolocatorError}
+          handleError={this.handleGeolocatorError}
         />
         <h1 className="ui center aligned header">
           <i className="compass icon" />
@@ -46,14 +46,6 @@ class App extends Component {
       </div>
     );
   }
-  // componentDidMount() {
-  //   fetch(
-  //     `/activities/bylocation?latitude=${this.state.location.latitude}&longitude=${this.state.location.longitude}`,
-  //     { accept: "application/json" }
-  //   )
-  //     .then(response => response.json())
-  //     .then(activities => this.setState({ activities: activities }));
-  // }
 }
 
 export default App;
