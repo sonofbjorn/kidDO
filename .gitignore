@@ -9,4 +9,4 @@ target/
 .settings
 .springBeans
 
-application.properties
+application.yml
