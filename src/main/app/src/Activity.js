@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from "react"
+import PropTypes from "prop-types"
 
 const Activity = ({ activity, distance }) => {
-  const cost = activity.cost === 0 ? "Free" : `$${activity.cost}`;
+  const cost = activity.cost === 0 ? "Free" : `$${activity.cost}`
   return (
     <div className="ui card">
       <div className="content">
@@ -21,12 +21,12 @@ const Activity = ({ activity, distance }) => {
         </span>
       </div>
     </div>
-  );
-};
+  )
+}
 
 Activity.propTypes = {
   activity: PropTypes.object.isRequired,
   distance: PropTypes.object.isRequired
-};
+}
 
-export default Activity;
+export default Activity
