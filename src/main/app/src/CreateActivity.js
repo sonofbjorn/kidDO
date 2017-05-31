@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Button, Dropdown, Form, Label } from "semantic-ui-react"
 import CurrencyInput from "react-currency-masked-input"
+import Select from "./FormSelect"
 
 class CreateActivity extends Component {
   constructor(props) {
@@ -24,16 +25,8 @@ class CreateActivity extends Component {
   }
   render() {
     const { addressStates } = this.state
-    const ageRangeOptions = this.state.ageRanges.map(ageRange => ({
-      key: ageRange.order,
-      text: ageRange.name,
-      value: ageRange.name
-    }))
-    const categoryOptions = this.state.categories.map((category, index) => ({
-      key: index,
-      text: category.name,
-      value: category.name
-    }))
+    const ageRangeOptions = this.state.ageRanges.map(ageRange => ageRange.name)
+    const categoryOptions = this.state.categories.map(category => category.name)
     return (
       <Form>
         <Form.Input id="activity-name-field" label="Name" required />
@@ -55,38 +48,34 @@ class CreateActivity extends Component {
           <Label basic>$</Label>
           <CurrencyInput id="activity-cost-field" defaultValue="0.00" />
         </Form.Input>
-        <Form.Select
+        <Select
           id="activity-age-range-field"
           label="Age range"
-          placeholder="Select one..."
           options={ageRangeOptions}
-          width={3}
+          width={4}
           required
         />
-        <Form.Select
+        <Select
           id="activity-age-range-field"
           label="Category"
-          placeholder="Select one..."
           options={categoryOptions}
-          width={3}
+          width={4}
           required
         />
-        <Form.Input id="address-street" label="Street address" required />
+        <Form.Input id="address-street-field" label="Street address" required />
         <Form.Group>
-          <Form.Input id="address-city" label="City" width={8} required />
-          <Form.Field width={5} required>
-            <label htmlFor="address-state">State</label>
-            <select>
-              {addressStates.map(addressState => (
-                <option value={addressState}>{addressState}</option>
-              ))}
-            </select>
-          </Form.Field>
-          <Form.Input id="address-zip" label="Zip code" width={4} required />
+          <Form.Input id="address-city-field" label="City" width={8} required />
+          <Select
+            id="address-state-field"
+            label="State"
+            options={addressStates}
+            required
+          />
+          <Form.Input id="address-zip" label="Zip code" required />
         </Form.Group>
       </Form>
     )
   }
 }
-
+export const useKeyOnly = (val, key) => val && key
 export default CreateActivity
