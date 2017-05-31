@@ -3,7 +3,7 @@ import { Form } from "semantic-ui-react"
 
 const FormSelect = ({ id, label, options, required, width }) => (
   <Form.Field width={width} required={required}>
-    <label htmlFor={id}>State</label>
+    <label htmlFor={id}>{label}</label>
     <select id={id} defaultValue="" required={required}>
       <option value="" disabled>Select one...</option>
       {options.map((option, index) => (
