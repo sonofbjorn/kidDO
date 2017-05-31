@@ -58,14 +58,18 @@ public enum AddressState {
     WYOMING("Wyoming","WY","US-WY"),
     PUERTO_RICO("Puerto Rico","PR","US-PR");
 
-    String unnabreviated;
+    String unabbreviated;
     String ANSIabbreviation;
     String ISOabbreviation;
 
-    AddressState(String unnabreviated, String ANSIabbreviation, String ISOabbreviation) {
-        this.unnabreviated = unnabreviated;
+    AddressState(String unabbreviated, String ANSIabbreviation, String ISOabbreviation) {
+        this.unabbreviated = unabbreviated;
         this.ANSIabbreviation = ANSIabbreviation;
         this.ISOabbreviation = ISOabbreviation;
+    }
+    
+    public String getUnabbreviated() {
+    	return this.unabbreviated;
     }
 
     /**
@@ -80,7 +84,7 @@ public enum AddressState {
         }
         input = input.trim();
         for (AddressState state : values()) {
-            if (state.unnabreviated.equalsIgnoreCase(input)    ||
+            if (state.unabbreviated.equalsIgnoreCase(input)    ||
                 state.ANSIabbreviation.equalsIgnoreCase(input) ||
                 state.ISOabbreviation.equalsIgnoreCase(input)) {
                 return state;
