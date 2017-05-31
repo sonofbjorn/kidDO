@@ -4870,6 +4870,12 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-currency-masked-input@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-currency-masked-input/-/react-currency-masked-input-2.0.2.tgz#c24f71ba2d4e4b8d861e4be3b83cfc933d987997"
+  dependencies:
+    react "^15.4.1"
+
 react-dev-utils@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-3.0.0.tgz#3677f37718ba0cae892ba9c01fe54d1622e6ef7c"
@@ -4976,7 +4982,7 @@ react-scripts@1.0.7:
   optionalDependencies:
     fsevents "1.0.17"
 
-react@^15.4.2:
+react@^15.4.1, react@^15.4.2:
   version "15.5.4"
   resolved "https://registry.yarnpkg.com/react/-/react-15.5.4.tgz#fa83eb01506ab237cdc1c8c3b1cea8de012bf047"
   dependencies:

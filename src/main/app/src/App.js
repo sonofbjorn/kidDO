@@ -3,6 +3,7 @@ import React from "react"
 import { BrowserRouter as Router, Route } from "react-router-dom"
 
 import ActivityList from "./ActivityList"
+import CreateActivity from "./CreateActivity"
 
 const App = () => (
   <div className="ui main text container">
@@ -13,6 +14,7 @@ const App = () => (
     <Router>
       <div>
         <Route exact path="/" component={ActivityList} />
+        <Route path="/create-activity" component={CreateActivity} />
       </div>
     </Router>
   </div>
