@@ -7,24 +7,24 @@ class ActivityList extends Component {
   constructor() {
     super()
     this.state = {
-      activities: [],
-      location: {
-        latitude: null,
-        longitude: null
-      }
+      activities: []
     }
     this.handleGeolocatorError = this.handleGeolocatorError.bind(this)
     this.updateLatLong = this.updateLatLong.bind(this)
+  }
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      this.updateLatLong,
+      this.handleGeolocatorError
+    )
   }
   handleGeolocatorError(error) {
     console.log(error) // TODO: fallback to search when error occurs with geolocation
   }
   updateLatLong({ coords }) {
-    this.setState({
-      location: { latitude: coords.latitude, longitude: coords.longitude }
-    })
+    const { latitude, longitude } = coords
     fetch(
-      `/activities/bylocation?latitude=${this.state.location.latitude}&longitude=${this.state.location.longitude}`,
+      `/activities/bylocation?latitude=${latitude}&longitude=${longitude}`,
       { accept: "application/json" }
     )
       .then(response => response.json())
@@ -41,10 +41,6 @@ class ActivityList extends Component {
     ))
     return (
       <div>
-        <Geolocator
-          callback={this.updateLatLong}
-          handleError={this.handleGeolocatorError}
-        />
         <div className="ui one cards">
           {activityList}
         </div>
