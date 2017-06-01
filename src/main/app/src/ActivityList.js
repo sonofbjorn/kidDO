@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 
 import Activity from "./Activity"
-import Geolocator from "./Geolocator"
 
 class ActivityList extends Component {
   constructor() {
