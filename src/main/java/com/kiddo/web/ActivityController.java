@@ -20,29 +20,30 @@ import com.kiddo.persistence.ActivityRepository;
 @RestController
 @RequestMapping("activities")
 public class ActivityController {
-	
+
 	private static final int DEFAULT_MAX_DISTANCE_MILES = 200;
-	
+
 	@Autowired
 	ActivityRepository activityRepository;
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Activity> getAll() {
 		return (List<Activity>) activityRepository.findAll();
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public Activity createActivity(@RequestBody Activity activity) {
 		return activityRepository.save(activity);
 	}
-	
+
 	@RequestMapping(path = "/{id}", method = RequestMethod.GET)
 	public Activity getActivityById(@PathVariable String id) {
 		return activityRepository.findOne(id);
 	}
-	
+
 	@RequestMapping(path = "/bylocation", method = RequestMethod.GET)
-	public List<GeoResult<Activity>> getActivitiesByLocation(@RequestParam double latitude, @RequestParam double longitude) {
+	public List<GeoResult<Activity>> getActivitiesByLocation(@RequestParam double latitude,
+			@RequestParam double longitude) {
 		final GeoJsonPoint searchLocation = new GeoJsonPoint(longitude, latitude);
 		final Distance maxDistance = new Distance(DEFAULT_MAX_DISTANCE_MILES, Metrics.MILES);
 		return activityRepository.findByLocationNear(searchLocation, maxDistance).getContent();
